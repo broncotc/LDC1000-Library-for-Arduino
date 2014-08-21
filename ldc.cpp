@@ -116,9 +116,8 @@ byte spi_writeByte(byte addr, byte data)
 
 byte spi_readByte( byte addr, byte data)
 {
-	        //rxbuf = data;
+	    //rxbuf = data;
 		txaddr = addr | 0x80;
-
 		digitalWrite(chipSelectPin,LOW);//P1OUT &= ~BIT0;
 		SPI.transfer(txaddr);//while (!(IFG2&UCA0TXIFG));
 		//UCA0TXBUF = txaddr;
@@ -128,21 +127,20 @@ byte spi_readByte( byte addr, byte data)
 		data = SPI.transfer(0x00);//* rxbuf = UCA0RXBUF;
 		//while (UCA0STAT & UCBUSY);
 		digitalWrite(chipSelectPin,HIGH);//P1OUT |= BIT0;
-
 		return 0;
 }
 byte spi_readBytes( byte addr, byte * buffer, byte len)
 {
-                int rxlen;		
-                rxlen = len;
+        int rxlen;		
+        rxlen = len;
 		rxbuf = buffer;
 		txaddr = addr | 0x80;
 		digitalWrite(chipSelectPin,LOW);//P1OUT &= ~BIT0;
 		//while (!(IFG2&UCA0TXIFG));
 		SPI.transfer(txaddr);//UCA0TXBUF = txaddr;
 		while (rxlen > 0) {
-		        //SPI.transfer(0x00);
-		        *rxbuf = SPI.transfer(0x00);
+		    //SPI.transfer(0x00);
+		    *rxbuf = SPI.transfer(0x00);
 			rxbuf++;
 			rxlen--;
 			}
