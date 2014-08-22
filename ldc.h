@@ -10,8 +10,7 @@
 #define LDCLIB_VERSION "0.1"
 
 #define LDCLIB_OK				0
-#define LDCLIB_ERROR_CHECKSUM	-1
-#define LDCLIB_ERROR_TIMEOUT	-2
+#define LDCLIB_ERROR_TIMEOUT	-1
 
 class ldc1000
 {
